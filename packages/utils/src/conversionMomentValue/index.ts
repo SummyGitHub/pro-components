@@ -93,6 +93,9 @@ export const convertMoment = (
     if (typeof dateFormatter === 'string' && dateFormatter !== 'string') {
       return value.format(dateFormatter);
     }
+    if (Array.isArray(dateFormatter) && dateFormatter.length > 0) {
+      return value.format(dateFormatter[0]);
+    }
     if (typeof dateFormatter === 'function') {
       return dateFormatter(value, valueType);
     }
